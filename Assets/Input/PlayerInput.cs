@@ -17,8 +17,10 @@ public class PlayerInput
         {
             yield return null;
 
-            if (_swipe.GetSwipeType() != SwipeType.None)
-                Swiped?.Invoke(_swipe.GetSwipeType());
+            SwipeType swipeType = _swipe.GetSwipeType();
+            
+            if (swipeType != SwipeType.None)
+                Swiped?.Invoke(swipeType);
         }
     }
 }

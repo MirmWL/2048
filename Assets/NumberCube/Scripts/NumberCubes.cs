@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class NumberCubes : MonoBehaviour
 {
@@ -51,14 +50,14 @@ public class NumberCubes : MonoBehaviour
     {
         _pool.Created -= SubscribeToCube;
     }
-    private void UnsubscribeFromCube( NumberCube subscribeTarget)
+    private void UnsubscribeFromCube(NumberCube subscribeTarget)
     {
-        subscribeTarget.CollidedWithOtherCube += (cube) => Combine(subscribeTarget, cube);
+        subscribeTarget.CollidedWithOtherCube -= (cube) => Combine(subscribeTarget, cube);
     }
     
     private void OnSwiped(SwipeType type)
     {
-        Move(type);
+        MoveAll(type);
         _pool.Create();
     }
 
@@ -73,7 +72,7 @@ public class NumberCubes : MonoBehaviour
         }
     }
     
-    private void Move(SwipeType type)
+    private void MoveAll(SwipeType type)
     {
         var swipeDirection = new SwipeDirection(type).Get();
         
